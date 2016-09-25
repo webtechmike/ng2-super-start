@@ -9,20 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var app_component_1 = require('./app.component');
-var AppModule = (function () {
-    function AppModule() {
+var user_1 = require('../shared/models/user');
+var UserProfileComponent = (function () {
+    function UserProfileComponent() {
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            declarations: [app_component_1.AppComponent],
-            bootstrap: [app_component_1.AppComponent]
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', user_1.User)
+    ], UserProfileComponent.prototype, "user", void 0);
+    UserProfileComponent = __decorate([
+        core_1.Component({
+            selector: 'user-profile',
+            template: "\n        <div *ngIf=\"user\">\n            <h2>{{ user.name }} <small>{{ user.username }}</small></h2>\n            <input class=\"form-control\" [(ngModel)]=\"user.name\"/>\n        </div>\n    "
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], UserProfileComponent);
+    return UserProfileComponent;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.UserProfileComponent = UserProfileComponent;
+//# sourceMappingURL=user-profile.component.js.map

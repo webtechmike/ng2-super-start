@@ -1,14 +1,25 @@
 import { Component } from '@angular/core';
+import { User } from './shared/models/user';
 
 @Component({
     selector: 'my-app',
-    template: `
-        <div class="jumbotron">
-            <h1>Welcome to Our App!</h1>
-        </div>
-    `,
-    styles: [`
-            .jumbotron { box-shadow: 0 2px 0 rgba(0,0,0,0.2); }
-        `]
+    templateUrl: './app/app.component.html',
+    styleUrls: ['./app/app.component.css']
 })
-export class AppComponent {}
+export class AppComponent {
+    message: string = "Hello!";
+    users: User[] = [
+        { id: 25, name: 'Mike', username: 'Webtechmike' },
+        { id: 26, name: 'Brian', username: 'B' },
+        { id: 27, name: 'Matt', username: 'FastMattRR' },
+    ];
+    activeUser: User;
+    selectUser(user) {
+        this.activeUser = user;
+        console.log(this.activeUser);
+    }
+
+    onUserCreated(event) {
+        this.users.push(event.user);
+    }
+}
